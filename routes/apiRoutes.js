@@ -3,11 +3,9 @@ const path = require("path");
 
 module.exports = (app) => {
     app.get("/api/notes", (req, res) => {
-        let notes = fs.readFileSync(path.join(__dirname, "../db/db.json"), 'utf8');
-        notes = JSON.parse(notes);
-        console.log(notes);
-        res.json(notes);
-    })
+        let database = fs.readFileSync(path.join(__dirname, "../db/db.json"), 'utf8');
+        res.json(JSON.parse(database));
+    });
 
     app.post("/api/notes", (req,res) => {
         let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), "utf8");
