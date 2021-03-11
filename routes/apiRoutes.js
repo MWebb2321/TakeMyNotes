@@ -11,6 +11,7 @@ module.exports = (app) => {
 
     app.post("/api/notes", (req,res) => {
         let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), "utf8");
+        const newId = uuid4();
         const newNote = {
             id = newID,
             title: req.body.title,
@@ -22,7 +23,7 @@ module.exports = (app) => {
         res.json(notes);
     });
 
-    app.delete{`/api/notes/:id`, (req, res) => {
+    app.delete{`api/notes/:id`, (req, res) => {
         let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), 'utf8');
         let id - req.params.id;
         notes = JSON.parse(notes);
@@ -36,4 +37,5 @@ module.exports = (app) => {
             }
         }
     })
+
 };
