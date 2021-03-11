@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = (app) => {
 
-    app.get('/home' (req,res) => {
+    app.get('/home', (req,res) => {
         res.sendFile(path.join(__dirname, 'index.html'));
     });
 
