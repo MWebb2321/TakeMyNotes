@@ -23,9 +23,9 @@ module.exports = (app) => {
         res.json(notes);
     });
 
-    app.delete{`api/notes/:id`, (req, res) => {
+    app.delete(`api/notes/:id`, (req, res) => {
         let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), 'utf8');
-        let id - req.params.id;
+        let id = req.params.id;
         notes = JSON.parse(notes);
         for (let i = 0; i < notes.length; i++) {
             if (id == notes[i].id) {
