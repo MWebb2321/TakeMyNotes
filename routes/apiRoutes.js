@@ -24,4 +24,16 @@ module.exports = (app) => {
 
     app.delete{`/api/notes/:id`, (req, res) => {
         let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), 'utf8');
-}
+        let id - req.params.id;
+        notes = JSON.parse(notes);
+        for (let i = 0; i < notes.length; i++) {
+            if (id == notes[i].id) {
+                notes.splice(i, 1);
+                fs.writeFileSync(path.join(_dirname, '../db/db.json'), JSON.stringify(notes), 'utf8');
+                res.json(notes);
+            } else {
+                throw (err);
+            }
+        }
+    })
+};
