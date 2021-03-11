@@ -11,9 +11,17 @@ module.exports = (app) => {
 
     app.post("/api/notes", (req,res) => {
         let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), "utf8");
+        const newNote = {
+            id = newID,
+            title: req.body.title,
+            text: req.body.text
+        };
         notes = JSON.parse(notes);
         notes.push(req.body);
         fs.writeFileSync(path.join(_dirname, "../db/db.json"), JSON.stringify(notes), "utf8");
         res.json(notes);
     });
+
+    app.delete{`/api/notes/:id`, (req, res) => {
+        let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), 'utf8');
 }
