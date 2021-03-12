@@ -1,39 +1,25 @@
-const fs = require("fs");
-const path = require("path");
+const noteData = require('./develop/db/db.json');
 
 module.exports = (app) => {
-    app.get("/api/notes", (req, res) => {
-        let database = fs.readFileSync(path.join(__dirname, "../db/db.json"), 'utf8');
-        res.json(JSON.parse(database));
-    });
+  app.get('/api/notes', (req, res) => res.json(noteData));
 
-    app.post("/api/notes", (req,res) => {
-        let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), "utf8");
-        const newId = uuid4();
-        const newNote = {
-            id = newID,
-            title: req.body.title,
-            text: req.body.text
-        };
-        notes = JSON.parse(notes);
-        notes.push(req.body);
-        fs.writeFileSync(path.join(_dirname, "../db/db.json"), JSON.stringify(notes), "utf8");
-        res.json(notes);
-    });
+  app.post('/api/notes', (req, res) => {
+      let array = req.body;
+      array.id;
+      for (let i = 0; i < noteData.length; i++) {
+        array.id = i;
+      }
+      noteData.push(req.body);
+      res.json(true);
+  });
 
-    app.delete(`api/notes/:id`, (req, res) => {
-        let notes = fs.readFileSync(path.join(_dirname, "../db/db.json"), 'utf8');
-        let id = req.params.id;
-        notes = JSON.parse(notes);
-        for (let i = 0; i < notes.length; i++) {
-            if (id == notes[i].id) {
-                notes.splice(i, 1);
-                fs.writeFileSync(path.join(_dirname, '../db/db.json'), JSON.stringify(notes), 'utf8');
-                res.json(notes);
-            } else {
-                throw (err);
-            }
-        }
-    })
+  app.delete('/api/notes/:id', (req, res) => {
 
+    const chosen = req.params.id;
+  
+    var removeId = noteData.map(function(item) { return item.id; }).indexOf(chosen);
+
+    noteData.splice(removeId, 1);
+    res.json(true);
+  });
 };
