@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 5500;
 
 app.use(express.static('./develop/public'));
 app.use(express.urlencoded({ extended: true }));

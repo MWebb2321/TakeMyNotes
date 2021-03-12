@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +15,14 @@
     "inquire": "^0.4.8",
     "inquirer": "^8.0.0",
     "uuid": "^8.3.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MWebb2321/TakeMyNotes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MWebb2321/TakeMyNotes/issues"
+  },
+  "homepage": "https://github.com/MWebb2321/TakeMyNotes#readme"
 }
