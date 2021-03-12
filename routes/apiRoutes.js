@@ -1,9 +1,9 @@
-const noteData = require('./develop/db/db.json');
+// const noteData = require('../develop/db/db.json');
+const router = require('express').Router();
 
-module.exports = (app) => {
-  app.get('/api/notes', (req, res) => res.json(noteData));
+router.get('/api/notes', (req, res) => res.json({test: 'noteData'}));
 
-  app.post('/api/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
       let array = req.body;
       array.id;
       for (let i = 0; i < noteData.length; i++) {
@@ -11,9 +11,9 @@ module.exports = (app) => {
       }
       noteData.push(req.body);
       res.json(true);
-  });
+});
 
-  app.delete('/api/notes/:id', (req, res) => {
+router.delete('/api/notes/:id', (req, res) => {
 
     const chosen = req.params.id;
   
@@ -21,5 +21,6 @@ module.exports = (app) => {
 
     noteData.splice(removeId, 1);
     res.json(true);
-  });
-};
+});
+
+module.exports = router;
