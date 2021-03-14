@@ -1,15 +1,16 @@
 // const noteData = require('../develop/db/db.json');
 const router = require('express').Router();
+const models = require('../develop/db/models.js');
 
-router.get('/api/notes', (req, res) => res.json({test: 'noteData'}));
+router.get('/api/notes', (req, res) => res.json({test: models.getNotes()}));
 
 router.post('/api/notes', (req, res) => {
       let array = req.body;
       array.id;
-      for (let i = 0; i < noteData.length; i++) {
+      for (let i = 0; i < array.length; i++) {
         array.id = i;
       }
-      noteData.push(req.body);
+      models.addNotes(req.body);
       res.json(true);
 });
 
